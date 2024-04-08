@@ -226,13 +226,13 @@ class Http
             $this->app->middleware->import(include_once $this->app->getBasePath() . 'middleware.php');
         }
 
-        $appRootNamespace = $this->app->getRootNamespace();
-        $rootPath         = root_path();
+        // $appRootNamespace = $this->app->getRootNamespace();
+        // $rootPath         = root_path();
 
-        $vendorMiddlewareFile = "{$rootPath}vendor/thinkcmf/cmf-{$appRootNamespace}/src/middleware.php";
-        if (is_file($vendorMiddlewareFile)) {
-            $this->app->middleware->import(include_once $vendorMiddlewareFile);
-        }
+        // $vendorMiddlewareFile = "{$rootPath}vendor/thinkcmf/cmf-{$appRootNamespace}/src/middleware.php";
+        // if (is_file($vendorMiddlewareFile)) {
+        //     $this->app->middleware->import(include_once $vendorMiddlewareFile);
+        // }
 
     }
 
@@ -267,12 +267,12 @@ class Http
             }
         }
 
-        if ($appRootNamespace == 'api') {
-            $routeFile = "{$rootPath}vendor/thinkcmf/cmf-api/src/route.php";
-            if (is_file($routeFile)) {
-                include_once $routeFile;
-            }
-        }
+        // if ($appRootNamespace == 'api') {
+        //     $routeFile = "{$rootPath}vendor/thinkcmf/cmf-api/src/route.php";
+        //     if (is_file($routeFile)) {
+        //         include_once $routeFile;
+        //     }
+        // }
 
 
         $this->app->event->trigger(RouteLoaded::class);

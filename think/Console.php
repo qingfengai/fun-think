@@ -374,7 +374,7 @@ class Console
     public function getLongVersion(): string
     {
         if ($this->app->version()) {
-            return sprintf('<comment>%s</comment>', 'ThinkPHP v' . $this->app->version() . ' & ThinkCMF v' . cmf_version());
+            return sprintf('<comment>%s</comment>', 'ThinkPHP v' . $this->app->version());
         }
 
         return '<info>Console Tool</info>';
