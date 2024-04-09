@@ -136,7 +136,7 @@ class App extends Container
      */
     protected $initialized = false;
 
-    /**
+   /**
      * 容器绑定标识
      * @var array
      */
@@ -159,7 +159,6 @@ class App extends Container
         'session'                 => Session::class,
         'validate'                => Validate::class,
         'view'                    => View::class,
-        'filesystem'              => Filesystem::class,
         'think\DbManager'         => Db::class,
         'think\LogManager'        => Log::class,
         'think\CacheManager'      => Cache::class,
@@ -175,10 +174,10 @@ class App extends Container
      */
     public function __construct(string $rootPath = '')
     {
-        if (defined('APP_NAMESPACE')) {
-            $this->namespace     = APP_NAMESPACE;
-            $this->rootNamespace = APP_NAMESPACE;
-        }
+        // if (defined('APP_NAMESPACE')) {
+        //     $this->namespace     = APP_NAMESPACE;
+        //     $this->rootNamespace = APP_NAMESPACE;
+        // }
 
         $this->thinkPath   = dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'topthink' . DIRECTORY_SEPARATOR . 'framework' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR;
         $this->rootPath    = $rootPath ? rtrim($rootPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR : $this->getDefaultRootPath();
@@ -205,13 +204,13 @@ class App extends Container
         }
 
         // 加载应用 provider
-        $apps = cmf_scan_dir($this->appPath . '*', GLOB_ONLYDIR);
-        foreach ($apps as $appName) {
-            $appProviderFile = $this->appPath . $appName . DIRECTORY_SEPARATOR . 'provider.php';
-            if (is_file($appProviderFile)) {
-                $this->bind(include $appProviderFile);
-            }
-        }
+        // $apps = cmf_scan_dir($this->appPath . '*', GLOB_ONLYDIR);
+        // foreach ($apps as $appName) {
+        //     $appProviderFile = $this->appPath . $appName . DIRECTORY_SEPARATOR . 'provider.php';
+        //     if (is_file($appProviderFile)) {
+        //         $this->bind(include $appProviderFile);
+        //     }
+        // }
 
         static::setInstance($this);
 
@@ -581,12 +580,13 @@ class App extends Container
 
         include_once $this->thinkPath . 'helper.php';
 
+        //修改
         // 加载应用配置
-        $appConfigFiles = glob(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . '*.php');
+        // $appConfigFiles = glob(__DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . '*.php');
 
-        foreach ($appConfigFiles as $file) {
-            $this->config->load($file, pathinfo($file, PATHINFO_FILENAME));
-        }
+        // foreach ($appConfigFiles as $file) {
+        //     $this->config->load($file, pathinfo($file, PATHINFO_FILENAME));
+        // }
         // 加载应用配置结束
 
         $configPath = $this->getConfigPath();
@@ -602,20 +602,19 @@ class App extends Container
         }
 
         //修改
-        // 动态配置
+        // // 动态配置
         // $runtimeConfigPath = CMF_DATA . 'config' . DIRECTORY_SEPARATOR;
 
-        $files = [];
+        // $files = [];
 
-        //修改
         // if (is_dir($runtimeConfigPath)) {
         //     $files = glob($runtimeConfigPath . '*' . $this->configExt);
         // }
 
-        foreach ($files as $file) {
-            $this->config->load($file, pathinfo($file, PATHINFO_FILENAME));
-        }
-        // 动态配置结束
+        // foreach ($files as $file) {
+        //     $this->config->load($file, pathinfo($file, PATHINFO_FILENAME));
+        // }
+        // // 动态配置结束
 
         //修改
         // 加载cmf-app，cmf-api事件配置

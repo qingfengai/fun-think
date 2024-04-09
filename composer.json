@@ -15,9 +15,6 @@
         "psr-4": {
             "think\\": "think"
         },
-        "files": [
-            "src/common.php"
-        ],
         "classmap": [
             "think/App.php",
             "think/View.php",
