@@ -226,6 +226,7 @@ class Http
             $this->app->middleware->import(include_once $this->app->getBasePath() . 'middleware.php');
         }
 
+        //修改
         // $appRootNamespace = $this->app->getRootNamespace();
         // $rootPath         = root_path();
 
@@ -247,7 +248,9 @@ class Http
         $rootPath         = root_path();
 
         if ($appRootNamespace == 'app') {
-            $routePath = "{$rootPath}data/route/";
+            //$routePath = "{$rootPath}data/route/";
+            //修改
+            $routePath = "{$rootPath}route/";
 
             if (is_dir($routePath)) {
                 $files = glob($routePath . '*.php');
@@ -267,6 +270,7 @@ class Http
             }
         }
 
+        //修改
         // if ($appRootNamespace == 'api') {
         //     $routeFile = "{$rootPath}vendor/thinkcmf/cmf-api/src/route.php";
         //     if (is_file($routeFile)) {

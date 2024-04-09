@@ -183,12 +183,15 @@ class App extends Container
         $this->thinkPath   = dirname(__DIR__, 3) . DIRECTORY_SEPARATOR . 'topthink' . DIRECTORY_SEPARATOR . 'framework' . DIRECTORY_SEPARATOR . 'src' . DIRECTORY_SEPARATOR;
         $this->rootPath    = $rootPath ? rtrim($rootPath, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR : $this->getDefaultRootPath();
         $this->appPath     = $this->rootPath . $this->namespace . DIRECTORY_SEPARATOR;
-        $this->runtimePath = $this->rootPath . 'data' . DIRECTORY_SEPARATOR . 'runtime' . DIRECTORY_SEPARATOR;
+        //$this->runtimePath = $this->rootPath . 'data' . DIRECTORY_SEPARATOR . 'runtime' . DIRECTORY_SEPARATOR;
+        //修改
+        $this->runtimePath = $this->rootPath . 'runtime' . DIRECTORY_SEPARATOR;
 
         if (defined('RUNTIME_PATH')) {
             $this->runtimePath = RUNTIME_PATH;
         }
 
+        //修改
         // 加载cmf-app，cmf-api provider
         // $appRootNamespace   = $this->getRootNamespace();
         // $rootPath           = $this->rootPath;
@@ -598,11 +601,13 @@ class App extends Container
             $this->config->load($file, pathinfo($file, PATHINFO_FILENAME));
         }
 
+        //修改
         // 动态配置
         // $runtimeConfigPath = CMF_DATA . 'config' . DIRECTORY_SEPARATOR;
 
         $files = [];
 
+        //修改
         // if (is_dir($runtimeConfigPath)) {
         //     $files = glob($runtimeConfigPath . '*' . $this->configExt);
         // }
@@ -612,6 +617,7 @@ class App extends Container
         }
         // 动态配置结束
 
+        //修改
         // 加载cmf-app，cmf-api事件配置
         // $appRootNamespace = $this->getRootNamespace();
         // $rootPath         = root_path();
