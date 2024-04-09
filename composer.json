@@ -20,7 +20,6 @@
         ],
         "classmap": [
             "think/App.php",
-            "think/Console.php",
             "think/View.php",
             "think/Route.php",
             "think/Http.php",
